@@ -1,6 +1,6 @@
-/* ==========================================
-   RESETEO Y ESTILOS GENERALES
-   ================================---------- */
+/* ==========================================================================
+   1. RESETEO Y ESTILOS BASE (MAMANTENIENDO UNIFORMIDAD TIPOGRÁFICA)
+   ========================================================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,27 +10,41 @@
 
 body {
     background-color: #f9f9f9;
-    color: #0f0f0f;
+    color: #333333; /* Tono gris oscuro en lugar de negro puro */
+    
 }
 
-/* ==========================================
-   BARRA DE NAVEGACIÓN (HEADER)
-   ================================---------- */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* ==========================================================================
+   2. ENCABEZADO Y NAVEGACIÓN
+   ========================================================================== */
 .encabezado {
     background-color: #ffffff;
     position: sticky;
     top: 0;
-    z-index: 100;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
 .barra-navegacion {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 24px;
-    gap: 15px;
-    flex-wrap: wrap; 
+    padding: 10px 20px;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 .seccion-logo {
@@ -47,14 +61,14 @@ body {
 }
 
 .logo-videostream img {
-    height: 28px;
+    height: 24px;
     width: auto;
+    object-fit: contain;
 }
 
 .logo-videostream h1 {
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: -0.5px;
+    font-size: 19px;
+    color: #212121;
 }
 
 .logo-videostream h1 span {
@@ -64,21 +78,20 @@ body {
 .enlaces-navegacion {
     display: flex;
     gap: 16px;
-    flex-wrap: wrap;
 }
 
 .enlaces-navegacion a {
     text-decoration: none;
     color: #606060;
     font-size: 14px;
-    font-weight: 500;
+  
     padding: 4px 0;
 }
 
 .enlaces-navegacion a.enlace-activo,
 .enlaces-navegacion a:hover {
-    color: #0f0f0f;
-    border-bottom: 2px solid #0f0f0f;
+    color: #212121;
+    border-bottom: 2px solid #212121;
 }
 
 .seccion-buscador {
@@ -86,73 +99,130 @@ body {
     align-items: center;
     gap: 12px;
     flex-wrap: wrap;
-    flex: 1 1 220px;
-    justify-content: flex-end;
 }
 
 .caja-busqueda {
     display: flex;
     align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 20px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    background-color: #f8f8f8;
-    flex: 1 1 150px;
-    max-width: 350px;
+    width: 240px;
 }
 
 .caja-busqueda input {
     border: none;
-    padding: 8px 14px;
+    padding: 7px 12px;
     font-size: 13px;
     outline: none;
     width: 100%;
-    background: transparent;
+    color: #333333;
 }
 
 .boton-buscar {
     border: none;
-    background: #f0f0f0;
-    padding: 8px 14px;
+    background: #f2f2f2;
+    padding: 7px 12px;
     cursor: pointer;
-    border-left: 1px solid #ccc;
+    color: #555555;
 }
 
 .icono-barra, .icono-perfil {
-    width: 28px;
-    height: 28px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     object-fit: cover;
+    flex-shrink: 0;
     cursor: pointer;
 }
 
-/* ==========================================
-   CONTENEDOR PRINCIPAL RESPONSIVO
-   ================================---------- */
+/* ==========================================================================
+   3. NOTIFICACIÓN TOAST (INTERACCIÓN 3)
+   ========================================================================== */
+.alerta-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: #212121;
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.alerta-toast.oculto {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+.icono-check {
+    background-color: #ffffff;
+    color: #212121;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+}
+
+.btn-cerrar-alerta {
+    background: none;
+    border: none;
+    color: #aaaaaa;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+/* ==========================================================================
+   4. LAYOUT ADAPTABLE (FLUIDO SIN MEDIA QUERIES)
+   ========================================================================== */
 .contenedor-principal {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1400px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: clamp(10px, 2vw, 20px);
+    padding: 16px;
     gap: 24px;
 }
 
 .columna-izquierda {
-    flex: 999 1 580px;
-    min-width: min(100%, 300px);
+    flex: 1 1 580px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
+    min-width: 0;
 }
 
-/* Reproductor Principal con relación de aspecto fluida */
+.columna-derecha {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ==========================================================================
+   5. REPRODUCTOR DE VIDEO AJUSTADO
+   ========================================================================== */
 .contenedor-reproductor {
     width: 100%;
-    background-color: #000;
-    border-radius: 12px;
-    overflow: hidden;
+    max-width: 860px;
     aspect-ratio: 16 / 9;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .contenedor-reproductor video {
@@ -164,12 +234,13 @@ body {
 .detalles-video {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .titulo-video {
-    font-size: clamp(16px, 2.5vw, 20px);
+    font-size: 19px;
     font-weight: bold;
+    color: #212121;
 }
 
 .metadatos-video {
@@ -177,7 +248,7 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
 }
 
 .estadisticas-video {
@@ -185,7 +256,9 @@ body {
     color: #606060;
 }
 
-/* Barra interactiva */
+/* ==========================================================================
+   6. BOTONES E INTERACCIONES (BOX-SHADOW Y BORDES AMPLIOS SUAVES)
+   ========================================================================== */
 .barra-interactiva {
     display: flex;
     align-items: center;
@@ -197,57 +270,61 @@ body {
     display: flex;
     align-items: center;
     gap: 6px;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     border: none;
-    padding: 8px 14px;
-    border-radius: 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    padding: 7px 14px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 13px;
-    font-weight: 600;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-weight: bold;
+    color: #333333;
+    transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 .boton-accion:hover {
-    background-color: #e5e5e5;
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
 }
 
-.boton-accion:active {
-    transform: scale(0.96);
+.boton-accion.activo {
+    background-color: #e8f0fe;
+    color: #1a73e8;
+    box-shadow: 0 1px 3px rgba(26, 115, 232, 0.25);
 }
 
 .boton-accion img {
-    width: 18px;
-    height: 18px;
-}
-
-/* Estado activo para Me gusta / No me gusta */
-.boton-accion.activo {
-    background-color: #0f0f0f;
-    color: #ffffff;
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .boton-opciones {
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     border: none;
-    padding: 8px 12px;
-    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    padding: 7px 12px;
+    border-radius: 6px;
     cursor: pointer;
+    color: #333333;
     font-weight: bold;
 }
 
 .separador {
     border: 0;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e0e0e0;
 }
 
-/* Sección Canal */
+/* ==========================================================================
+   7. CANAL Y DESCRIPCIÓN
+   ========================================================================== */
 .seccion-canal {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 12px;
-    padding: 4px 0;
 }
 
 .info-canal {
@@ -257,16 +334,17 @@ body {
 }
 
 .avatar-canal {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    background-color: #ccc;
+    flex-shrink: 0;
 }
 
 .nombre-canal {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
+    color: #212121;
 }
 
 .suscriptores-canal {
@@ -274,34 +352,39 @@ body {
     color: #606060;
 }
 
-/* Estilos de Suscripción */
+/* Botón Suscribirse */
 .boton-suscribirse {
-    background-color: #cc0000;
+    background-color: #ff0000;
     color: #ffffff;
     border: none;
-    padding: 10px 18px;
-    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(255, 0, 0, 0.25);
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 13px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s;
 }
 
 .boton-suscribirse:hover {
-    background-color: #990000;
+    background-color: #cc0000;
 }
 
 .boton-suscribirse.suscrito {
-    background-color: #f2f2f2;
-    color: #0f0f0f;
+    background-color: #e5e5e5;
+    color: #333333;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
 /* Caja de Descripción */
 .caja-descripcion {
-    background-color: #f2f2f2;
-    padding: 12px 16px;
-    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 12px 14px;
+    border-radius: 8px;
     font-size: 13px;
-    line-height: 1.4;
+    line-height: 1.45;
+    color: #444444;
 }
 
 .descripcion-corta {
@@ -309,10 +392,6 @@ body {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-}
-
-.descripcion-expandida {
-    display: block;
 }
 
 .enlace-mostrar-mas {
@@ -325,23 +404,28 @@ body {
     padding: 0;
 }
 
-/* Carrusel de más videos */
+/* ==========================================================================
+   8. CARRUSEL "MÁS VIDEOS"
+   ========================================================================== */
 .seccion-mas-videos {
-    margin-top: 10px;
+    margin-top: 6px;
 }
 
 .seccion-mas-videos h3 {
-    font-size: 16px;
-    margin-bottom: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #212121;
 }
 
 .carrusel-mas-videos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 12px;
 }
 
 .tarjeta-video-horizontal {
+    flex: 1 1 130px;
     cursor: pointer;
 }
 
@@ -349,9 +433,9 @@ body {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-    border-radius: 8px;
+    border-radius: 6px;
     overflow: hidden;
-    background-color: #000;
+    background-color: #1a1a1a;
 }
 
 .contenedor-miniatura video {
@@ -362,19 +446,21 @@ body {
 
 .duracion-badge {
     position: absolute;
-    bottom: 6px;
-    right: 6px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    font-size: 11px;
+    bottom: 4px;
+    right: 4px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: bold;
     padding: 2px 4px;
     border-radius: 4px;
 }
 
 .titulo-miniatura {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
-    margin-top: 6px;
+    margin-top: 5px;
+    color: #212121;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -385,35 +471,31 @@ body {
     color: #606060;
 }
 
-/* ==========================================
-   COLUMNA DERECHA (ASIDE)
-   ================================---------- */
-.columna-derecha {
-    flex: 1 1 300px;
-    min-width: min(100%, 280px);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
+/* ==========================================================================
+   9. COLUMNA DERECHA (COLA Y RECOMENDADOS)
+   ========================================================================== */
 .encabezado-bloque {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .encabezado-bloque h3 {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
+    color: #212121;
 }
 
 .boton-secundario {
-    background: none;
+    background-color: #ffffff;
     border: none;
-    color: #065fd4;
-    font-size: 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    color: #333333;
+    font-size: 11px;
     font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
@@ -425,27 +507,29 @@ body {
 
 .tarjeta-video-lateral {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
-    position: relative;
-    padding: 4px;
+    padding: 6px;
     border-radius: 6px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
     transition: background-color 0.2s;
     cursor: pointer;
 }
 
 .tarjeta-video-lateral:hover {
-    background-color: #eaeaea;
+    background-color: #f2f2f2;
 }
 
 .contenedor-miniatura-lateral {
     position: relative;
     width: 110px;
     height: 62px;
+    aspect-ratio: 16 / 9;
     flex-shrink: 0;
     border-radius: 6px;
     overflow: hidden;
-    background-color: #000;
+    background-color: #1a1a1a;
 }
 
 .contenedor-miniatura-lateral video {
@@ -460,9 +544,10 @@ body {
 }
 
 .info-video-lateral h4 {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
-    line-height: 1.2;
+    color: #212121;
+    line-height: 1.25;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -476,10 +561,12 @@ body {
     margin-top: 2px;
 }
 
-/* Botones laterales (+ / ✕) */
-.boton-agregar-cola, .boton-eliminar-cola {
-    border: 1px solid #ccc;
+/* Botones laterales (+ y ✕) con elevación suave y bordes rectangulares suaves */
+.boton-agregar-cola, 
+.boton-eliminar-cola {
+    border: none;
     background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
     width: 26px;
     height: 26px;
     border-radius: 4px;
@@ -489,17 +576,17 @@ body {
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
+    color: #333333;
     flex-shrink: 0;
-    align-self: center;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 .boton-agregar-cola:hover {
-    background-color: #0f0f0f;
+    background-color: #212121;
     color: #ffffff;
 }
 
 .boton-eliminar-cola:hover {
     background-color: #cc0000;
     color: #ffffff;
-    border-color: #cc0000;
 }

@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="NayaraPérez">
     <title>VideoStream - Plataforma de Videos</title>
     <link rel="stylesheet" href="static/css/style.css">
 </head>
@@ -13,7 +12,6 @@
     <!-- ENCABEZADO Y BARRA DE NAVEGACIÓN -->
     <header class="encabezado">
         <nav class="barra-navegacion">
-            <!-- Logo y enlaces principales -->
             <div class="seccion-logo">
                 <div class="logo-videostream">
                     <img src="static/img/logo_youtube.png" alt="Logo VideoStream">
@@ -26,11 +24,10 @@
                 </div>
             </div>
 
-            <!-- Buscador y perfil de usuario -->
             <div class="seccion-buscador">
                 <div class="caja-busqueda">
                     <input type="text" id="input-busqueda" placeholder="Buscar...">
-                    <button class="boton-buscar" aria-label="Buscar">🔍</button>
+                    <button class="boton-buscar" aria-label="Buscar">🔍︎</button>
                 </div>
                 <img src="static/img/canpana.png" alt="Notificaciones" class="icono-barra">
                 <img src="static/img/icon.png" alt="Perfil" class="icono-perfil">
@@ -38,35 +35,42 @@
         </nav>
     </header>
 
+    <!-- NOTIFICACIÓN DE ALERTA AL AÑADIR A LA COLA -->
+    <div id="alerta-toast" class="alerta-toast oculto">
+        <span class="icono-check">✔</span>
+        <span class="texto-alerta">Video añadido a la cola</span>
+        <button id="cerrar-alerta" class="btn-cerrar-alerta">✕</button>
+    </div>
+
     <!-- CONTENIDO PRINCIPAL -->
     <main class="contenedor-principal">
 
-        <!-- COLUMNA IZQUIERDA: REPRODUCTOR Y DETALLES DEL VIDEO -->
+        <!-- COLUMNA IZQUIERDA: REPRODUCTOR Y DETALLES -->
         <section class="columna-izquierda">
             
-            <!-- Contenedor del video principal -->
+            <!-- Reproductor Principal -->
             <div class="contenedor-reproductor">
                 <video id="video-principal" controls poster="static/images/cuadrado.png">
                     <source src="static/video/Cerro_del_Hierro.mp4" type="video/mp4">
-                    Tu navegador no soporta el reproductor de video.
+                    Tu navegador no soporta la reproducción de video.
                 </video>
             </div>
 
-            <!-- Información del video principal -->
+            <!-- Detalles e Interacción -->
             <div class="detalles-video">
                 <h2 class="titulo-video">Lagos y montañas</h2>
                 <div class="metadatos-video">
                     <span class="estadisticas-video">95 mil visualizaciones · 10 abr 2024</span>
                     
-                    <!-- Botones de interacción -->
                     <div class="barra-interactiva">
+                        <!-- Interacción 1: Sumar "Me gusta" -->
                         <button class="boton-accion" id="boton-megusta">
                             <img src="static/img/Like.png" alt="Me gusta">
-                            <span id="contador-megusta">4.800</span>
+                            <span id="contador-megusta">4,8 K</span>
                         </button>
                         <button class="boton-accion" id="boton-nomegusta">
                             <img src="static/img/disLike.png" alt="No me gusta">
-                            <span id="contador-nomegusta">120</span>
+                            <span>120</span>
                         </button>
                         <button class="boton-accion" id="boton-compartir">
                             <img src="static/img/compartir.png" alt="Compartir">
@@ -83,34 +87,35 @@
 
             <hr class="separador">
 
-            <!-- Sección del canal y botón de suscripción -->
+            <!-- Sección del Canal -->
             <div class="seccion-canal">
                 <div class="info-canal">
                     <img src="static/img/logo_canal.png" alt="Logo Canal" class="avatar-canal">
                     <div>
                         <h3 class="nombre-canal">VideoStream</h3>
-                        <p class="suscriptores-canal"><span id="contador-suscriptores">1.200.000</span> suscriptores</p>
+                        <p class="suscriptores-canal"><span id="contador-suscriptores">1,2 M</span> de suscriptores</p>
                     </div>
                 </div>
+                <!-- Interacción 2: Botón Suscribirse -->
                 <button class="boton-suscribirse" id="boton-suscripcion">Suscribirse</button>
             </div>
 
-            <!-- Descripción del video -->
+            <!-- Caja de Descripción -->
             <div class="caja-descripcion">
                 <p id="texto-descripcion" class="descripcion-corta">
-                    Un recorrido por los lagos más hermosos de la Patagonia y sus paisajes vírgenes. Consejos, rutas y paisajes imperdibles para tu próximo viaje. Descubre la magia de la naturaleza, trekking guiado y la mejor época del año para visitar estos lugares inolvidables.
+                    Un recorrido por los lagos más hermosos de la Patagonia y sus paisajes vírgenes. Consejos, rutas y paisajes imperdibles.
                 </p>
-                <button id="boton-mostrar-mas" class="enlace-mostrar-mas">Mostrar más</button>
+                <button id="boton-mostrar-mas" class="enlace-mostrar-mas">Mostrar más ▾</button>
             </div>
 
-            <!-- Sección de "Más videos" -->
+            <!-- Interacción 4: Carrusel inferior con Hover Preview -->
             <div class="seccion-mas-videos">
                 <h3>Más videos</h3>
                 <div class="carrusel-mas-videos">
                     
-                    <div class="tarjeta-video-horizontal" data-titulo="Rutas de trekking" data-canal="VideoStream" data-vistas="80 mil visualizaciones" data-duracion="6:15" data-video="static/video/Cerro_del_Hierro.mp4">
+                    <div class="tarjeta-video-horizontal">
                         <div class="contenedor-miniatura">
-                            <video class="video-vista-previa" muted loop poster="static/images/cuadrado.png">
+                            <video class="video-vista-previa" muted loop playsinline poster="static/images/cuadrado.png">
                                 <source src="static/video/Cerro_del_Hierro.mp4" type="video/mp4">
                             </video>
                             <span class="duracion-badge">6:15</span>
@@ -119,9 +124,9 @@
                         <p class="vistas-miniatura">80 mil visualizaciones</p>
                     </div>
 
-                    <div class="tarjeta-video-horizontal" data-titulo="Lagos y montañas" data-canal="VideoStream" data-vistas="95 mil visualizaciones" data-duracion="4:32" data-video="static/video/Cerro_del_Hierro.mp4">
+                    <div class="tarjeta-video-horizontal">
                         <div class="contenedor-miniatura">
-                            <video class="video-vista-previa" muted loop poster="static/images/cuadrado.png">
+                            <video class="video-vista-previa" muted loop playsinline poster="static/images/cuadrado.png">
                                 <source src="static/video/Cerro_del_Hierro.mp4" type="video/mp4">
                             </video>
                             <span class="duracion-badge">4:32</span>
@@ -130,9 +135,9 @@
                         <p class="vistas-miniatura">95 mil visualizaciones</p>
                     </div>
 
-                    <div class="tarjeta-video-horizontal" data-titulo="Fauna patagónica" data-canal="VideoStream" data-vistas="60 mil visualizaciones" data-duracion="3:50" data-video="static/video/Cerro_del_Hierro.mp4">
+                    <div class="tarjeta-video-horizontal">
                         <div class="contenedor-miniatura">
-                            <video class="video-vista-previa" muted loop poster="static/images/cuadrado.png">
+                            <video class="video-vista-previa" muted loop playsinline poster="static/images/cuadrado.png">
                                 <source src="static/video/Cerro_del_Hierro.mp4" type="video/mp4">
                             </video>
                             <span class="duracion-badge">3:50</span>
@@ -141,9 +146,9 @@
                         <p class="vistas-miniatura">60 mil visualizaciones</p>
                     </div>
 
-                    <div class="tarjeta-video-horizontal" data-titulo="Consejos para viajar" data-canal="VideoStream" data-vistas="110 mil visualizaciones" data-duracion="4:18" data-video="static/video/Cerro_del_Hierro.mp4">
+                    <div class="tarjeta-video-horizontal">
                         <div class="contenedor-miniatura">
-                            <video class="video-vista-previa" muted loop poster="static/images/cuadrado.png">
+                            <video class="video-vista-previa" muted loop playsinline poster="static/images/cuadrado.png">
                                 <source src="static/video/Cerro_del_Hierro.mp4" type="video/mp4">
                             </video>
                             <span class="duracion-badge">4:18</span>
@@ -157,7 +162,7 @@
 
         </section>
 
-        <!-- COLUMNA DERECHA: COLA Y RECOMENDADOS -->
+        <!-- COLUMNA DERECHA: SIGUIENTE EN LA COLA Y RECOMENDADOS -->
         <aside class="columna-derecha">
 
             <!-- Bloque: Siguiente en la cola -->
@@ -168,9 +173,9 @@
                 </div>
 
                 <div id="lista-cola" class="lista-videos-lateral">
-                    <div class="tarjeta-video-lateral" data-titulo="Explorando la Patagonia" data-canal="VideoStream" data-vistas="120 mil visualizaciones" data-duracion="6:15" data-video="static/video/Cerro_del_Hierro.mp4">
+                    <div class="tarjeta-video-lateral">
                         <div class="contenedor-miniatura-lateral">
-                            <video class="video-vista-previa" muted loop poster="static/images/cuadrado.png">
+                            <video class="video-vista-previa" muted loop playsinline poster="static/images/cuadrado.png">
                                 <source src="static/video/Cerro_del_Hierro.mp4" type="video/mp4">
                             </video>
                             <span class="duracion-badge">6:15</span>
@@ -179,36 +184,6 @@
                             <h4>Explorando la Patagonia</h4>
                             <p class="canal">VideoStream</p>
                             <p class="vistas">120 mil visualizaciones</p>
-                        </div>
-                        <button class="boton-eliminar-cola" title="Eliminar de la cola">✕</button>
-                    </div>
-
-                    <div class="tarjeta-video-lateral" data-titulo="Comida callejera" data-canal="VideoStream" data-vistas="98 mil visualizaciones" data-duracion="4:10" data-video="static/video/Cerro_del_Hierro.mp4">
-                        <div class="contenedor-miniatura-lateral">
-                            <video class="video-vista-previa" muted loop poster="static/images/cuadrado.png">
-                                <source src="static/video/Cerro_del_Hierro.mp4" type="video/mp4">
-                            </video>
-                            <span class="duracion-badge">4:10</span>
-                        </div>
-                        <div class="info-video-lateral">
-                            <h4>Comida callejera</h4>
-                            <p class="canal">VideoStream</p>
-                            <p class="vistas">98 mil visualizaciones</p>
-                        </div>
-                        <button class="boton-eliminar-cola" title="Eliminar de la cola">✕</button>
-                    </div>
-
-                    <div class="tarjeta-video-lateral" data-titulo="Ciudades del mundo" data-canal="VideoStream" data-vistas="210 mil visualizaciones" data-duracion="8:12" data-video="static/video/Cerro_del_Hierro.mp4">
-                        <div class="contenedor-miniatura-lateral">
-                            <video class="video-vista-previa" muted loop poster="static/images/cuadrado.png">
-                                <source src="static/video/Cerro_del_Hierro.mp4" type="video/mp4">
-                            </video>
-                            <span class="duracion-badge">8:12</span>
-                        </div>
-                        <div class="info-video-lateral">
-                            <h4>Ciudades del mundo</h4>
-                            <p class="canal">VideoStream</p>
-                            <p class="vistas">210 mil visualizaciones</p>
                         </div>
                         <button class="boton-eliminar-cola" title="Eliminar de la cola">✕</button>
                     </div>
@@ -223,9 +198,9 @@
 
                 <div id="lista-recomendados" class="lista-videos-lateral">
 
-                    <div class="tarjeta-video-lateral" data-titulo="Rutas de trekking" data-canal="VideoStream" data-vistas="80 mil visualizaciones" data-duracion="5:20" data-video="static/video/Cerro_del_Hierro.mp4">
+                    <div class="tarjeta-video-lateral">
                         <div class="contenedor-miniatura-lateral">
-                            <video class="video-vista-previa" muted loop poster="static/images/cuadrado.png">
+                            <video class="video-vista-previa" muted loop playsinline poster="static/images/cuadrado.png">
                                 <source src="static/video/Cerro_del_Hierro.mp4" type="video/mp4">
                             </video>
                             <span class="duracion-badge">5:20</span>
@@ -235,12 +210,13 @@
                             <p class="canal">VideoStream</p>
                             <p class="vistas">80 mil visualizaciones</p>
                         </div>
-                        <button class="boton-agregar-cola" title="Añadir a la cola de reproducción">+</button>
+                        <!-- Interacción 3: Botón Añadir a la cola (+) -->
+                        <button class="boton-agregar-cola" title="Añadir a la cola">+</button>
                     </div>
 
-                    <div class="tarjeta-video-lateral" data-titulo="Fauna patagónica" data-canal="VideoStream" data-vistas="60 mil visualizaciones" data-duracion="3:50" data-video="static/video/Cerro_del_Hierro.mp4">
+                    <div class="tarjeta-video-lateral">
                         <div class="contenedor-miniatura-lateral">
-                            <video class="video-vista-previa" muted loop poster="static/images/cuadrado.png">
+                            <video class="video-vista-previa" muted loop playsinline poster="static/images/cuadrado.png">
                                 <source src="static/video/Cerro_del_Hierro.mp4" type="video/mp4">
                             </video>
                             <span class="duracion-badge">3:50</span>
@@ -250,12 +226,12 @@
                             <p class="canal">VideoStream</p>
                             <p class="vistas">60 mil visualizaciones</p>
                         </div>
-                        <button class="boton-agregar-cola" title="Añadir a la cola de reproducción">+</button>
+                        <button class="boton-agregar-cola" title="Añadir a la cola">+</button>
                     </div>
 
-                    <div class="tarjeta-video-lateral" data-titulo="Atardeceres increíbles" data-canal="VideoStream" data-vistas="72 mil visualizaciones" data-duracion="4:18" data-video="static/video/Cerro_del_Hierro.mp4">
+                    <div class="tarjeta-video-lateral">
                         <div class="contenedor-miniatura-lateral">
-                            <video class="video-vista-previa" muted loop poster="static/images/cuadrado.png">
+                            <video class="video-vista-previa" muted loop playsinline poster="static/images/cuadrado.png">
                                 <source src="static/video/Cerro_del_Hierro.mp4" type="video/mp4">
                             </video>
                             <span class="duracion-badge">4:18</span>
@@ -265,7 +241,7 @@
                             <p class="canal">VideoStream</p>
                             <p class="vistas">72 mil visualizaciones</p>
                         </div>
-                        <button class="boton-agregar-cola" title="Añadir a la cola de reproducción">+</button>
+                        <button class="boton-agregar-cola" title="Añadir a la cola">+</button>
                     </div>
 
                 </div>
@@ -275,7 +251,6 @@
 
     </main>
 
-    <!-- ARCHIVO JS EXTERNO -->
     <script src="static/js/script.js"></script>
 </body>
 
